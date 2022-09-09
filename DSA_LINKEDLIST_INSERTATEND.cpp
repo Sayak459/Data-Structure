@@ -24,7 +24,6 @@ struct node* insertAtEnd(struct node*head,int data)
 	}
 	p->next=ptr;
 	ptr->next=NULL;
-	p->next=ptr;
 	return head;
 	
 }
