@@ -1,0 +1,38 @@
+import java.util.*;
+public class stocks{
+    //optimal
+    static int opt(int[]arr)
+    {
+        int mini=arr[0];
+        int profit=0;
+        for(int i=1;i<arr.length;i++)
+        {
+            int cost=arr[i]-mini;
+            profit=Math.max(profit,cost);
+            mini=Math.min(arr[i],mini);
+        }
+        return profit;
+    }
+    //brute
+    static int brute(int[]arr)
+    {
+        int profit=0;
+        for(int i=0;i<arr.length-1;i++)
+        {
+            for(int j=i+1;j<arr.length;j++)
+            {
+                int cost=arr[j]-arr[i];
+                profit=Math.max(profit,cost);
+                j++;
+            }
+            i++;
+        }
+        return profit;
+    }
+
+     public static void main(String []args){
+         int[] arr={12,5,4,22,6,70};
+        //System.out.println(opt(arr));
+        System.out.println(brute(arr));
+     }
+}

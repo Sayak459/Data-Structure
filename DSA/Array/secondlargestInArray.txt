@@ -1,0 +1,59 @@
+//brute if there is no duplicate
+class Compute {
+    
+    public int largest(int arr[], int n)
+    {
+        Arrays.sort(arr);
+        return arr[n-1];
+    }
+}
+
+//better
+
+
+class Solution {
+    int print2largest(int arr[], int n) {
+        int small=Integer.MAX_VALUE,large=Integer.MIN_VALUE,ss=Integer.MAX_VALUE,sl=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++)
+        {
+            small=Math.min(arr[i],small);
+            large=Math.max(arr[i],large);
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]<ss && arr[i]!=small)
+            {
+                ss=arr[i];
+            }
+            if(arr[i]>sl && arr[i]!=large)
+            {
+                sl=arr[i];
+            }
+        }
+        System.out.println("The largest element of the array is "+large+"and the second largest element is"+sl);
+    }
+}
+
+//optimal
+class Solution {
+    int print2largest(int arr[], int n) {
+        if(n<2)
+        {
+            return -1;
+        }
+        int large=Integer.MIN_VALUE,sl=Integer.MIN_VALUE;
+       for(int i=0;i<n;i++)
+       {
+           if(arr[i]>large)
+           {
+               sl=large;
+               large=arr[i];
+           }
+           if(arr[i]>sl && arr[i]!=large)
+           {
+               sl=arr[i];
+           }
+       }
+       return sl;
+    }
+}
